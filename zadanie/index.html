@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Сайт о The Beatles</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home" style="background: url('images/hero-bg.jpg') no-repeat center center/cover; color: white; min-height: 100vh; display: flex; flex-direction: column;">
+<header>
+    <div class="header-container">
+        <h1>The Beatles</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="order.html">Заказать альбом</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main style="flex: 1;">
+    <section style="background: rgba(33, 26, 25, 0.8); padding: 20px; border-radius: 10px; margin: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: 3rem; text-align: center;">Добро пожаловать!</h2>
+        <p>Этот сайт посвящён культовой группе The Beatles. Здесь вы найдёте информацию об истории коллектива, их музыкальных достижениях и сможете заказать альбомы для коллекции.</p>
+    </section>
+    <section class="albums" style="margin: 20px;">
+        <h2 style="text-align: center; color: white;">Популярные альбомы</h2>
+        <div class="carousel">
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <div class="carousel-container" style="display: flex; overflow: hidden; justify-content: center; align-items: center;">
+                <div class="carousel-item" style="text-align: center; padding: 10px; display: none;">
+                    <img src="images/album1.jpg" alt="Abbey Road" style="max-width: 300px; border-radius: 10px;">
+                    <p style="color: white; margin-top: 10px;">Abbey Road</p>
+                </div>
+                <div class="carousel-item" style="text-align: center; padding: 10px; display: none;">
+                    <img src="images/album2.jpg" alt="Revolver" style="max-width: 300px; border-radius: 10px;">
+                    <p style="color: white; margin-top: 10px;">Revolver</p>
+                </div>
+                <div class="carousel-item" style="text-align: center; padding: 10px; display: none;">
+                    <img src="images/album3.jpg" alt="Let It Be" style="max-width: 300px; border-radius: 10px;">
+                    <p style="color: white; margin-top: 10px;">Let It Be</p>
+                </div>
+            </div>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </section>
+</main>
+<footer style="background: #211A19; color: white; padding: 10px; text-align: center; margin-top: auto;">
+    <p>&copy; 2025 Сайт о The Beatles. Все права защищены.</p>
+</footer>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.display = i === index ? 'block' : 'none';
+        });
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    // Initialize carousel
+    showSlide(currentSlide);
+</script>
+</body>
+</html>
+
